@@ -6,6 +6,10 @@ var port = process.env.PORT || 3000;
 
 require('dotenv').config()
 
+app.use(bodyParser.urlencoded({extended:false}))
+
+app.use(bodyParser.json())
+
 app.get("/", function (req, res) {
     res.send({
         message: "Default route"
