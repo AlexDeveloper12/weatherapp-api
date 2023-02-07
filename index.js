@@ -3,6 +3,11 @@ var bodyParser = require('body-parser');
 var axios = require('axios');
 var app = express();
 var port = process.env.PORT || 3000;
+const cors = require('cors');
+
+app.use(cors({
+    origin:'https://63e2a890e91d2d287c38e4d4--glittery-scone-8557fc.netlify.app/'
+}))
 
 require('dotenv').config()
 
