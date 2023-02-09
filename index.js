@@ -59,17 +59,23 @@ app.get("/cities/:city", function (req, res) {
         }
     }
 
-    axios.get(`${process.env.GEODB_CITIES_LINK}/cities?minPopulation=1000000&namePrefix=${city}`,config)
+    if(city!==""){
+        axios.get(`${process.env.GEODB_CITIES_LINK}/cities?minPopulation=1000000&namePrefix=${city}`,config)
         .then(response => {
             res.send({
                 message: response.data
             })
         })
+    }
+    else {
+        res.send({
+            message:"Please define a city"
+        })
+    }
+
+
 
 });
-
-
-
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
